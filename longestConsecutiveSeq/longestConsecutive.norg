@@ -1,0 +1,13 @@
+Runtime: O(n)
+Space: O(n)
+
+
+Explanation:
+
+The main idea is to loop through the numbers array and search for the smallest value to start counting a streak.
+
+You can do this by creating a set from the array so that there are no duplicates.
+
+From there, go through the array and check if the set has a previous previous. If it does, skip it. Otherwise, if it does not (it's the smallest value)
+then you should step into an inner loop and start checking if the next consecutive number exists. Increme the current number and the streak. Return either the current longest streak or the current streak (whichever is longer)
+
