@@ -22,11 +22,9 @@ Anything on the right branch of the root will take precedence over the
 left branch barring the equivalent sibling doesn't existon the right side but does on the left.
 
 
-	- Build Output array based on right side.
-	- "fill in" gaps based on index of the output array.
-		- indices correspond to the height of the tree.
-		- so if at h=4, a node on the right side does not exist,
-		  then we fill it in with the rightmost value from the left side
+When you perform BFS, you go from left -> right. So, the last node in the array
+should be the rightmost.
+
 **/
 
 var rightSideView = function (root) {
