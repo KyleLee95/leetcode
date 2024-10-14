@@ -6,7 +6,6 @@ var uniquePaths = function (m, n) {
       dp[col][row] = dp[col - 1][row] + dp[col][row - 1];
     }
   }
-  console.log(dp);
   return dp[m - 1][n - 1];
 };
 
