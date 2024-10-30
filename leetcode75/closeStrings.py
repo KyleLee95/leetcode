@@ -48,6 +48,56 @@ class Solution:
             return are_equal
         return True
 
+    def closeStringsBits(self, word1: str, word2: str) -> bool:
+
+        if len(word1) != len(word2):
+            return False
+
+        # Initialize frequency maps and bitmasks
+        word1_map = [0] * 26
+        word2_map = [0] * 26
+
+        # word_i-th_bit is the integer representation of the word
+        # this represents the resulting integer if you were to represent all of
+        # the letters as numbers in a 26 bit integer
+        word1_bit = 0
+        word2_bit = 0
+
+        # Count frequencies and build bitmask for word1
+        for char in word1:
+            index = ord(char) - ord("a")
+            print("idx", index)
+
+            print("idx-th element before bit ops", word1_map[index])
+            word1_map[index] += 1
+
+            print("word1_bit before", word1_bit)
+            word1_bit |= 1 << index
+            print("word1_bit after", word1_bit)
+            print("idx-th element after bit ops", word1_map[index])
+
+        print("\n")
+        # Count frequencies and build bitmask for word2
+        for char in word2:
+            index = ord(char) - ord("a")
+            word2_map[index] += 1
+            word2_bit |= 1 << index
+            print("word2_bit", word2_bit)
+
+        print("word1_map", word1_map)
+        print("word2_map", word2_map)
+
+        # Check if both words have the same set of characters
+        print("final word1_bit, word2_bit", word1_bit, word2_bit)
+        if word1_bit != word2_bit:
+            return False
+
+        # Sort frequency maps and compare
+        word1_map.sort()
+        word2_map.sort()
+
+        return word1_map == word2_map
+
 
 ### better implementation:
 # from collections import Counter
@@ -82,6 +132,9 @@ tests = [
     ["aaa", "bbb"],
     ["abc", "bca"],
 ]
+
+
 s = Solution()
 for test in tests:
-    print(s.closeStrings(test[0], test[1]))
+    print("test case:", test)
+    print(s.closeStringsBits(test[0], test[1]))
